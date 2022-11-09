@@ -9,7 +9,7 @@ namespace ObjectOrientedProgram.InventoryManagement
 {
     public class Inventory
     {
-        List<IneventoryDetails> details = new List<IneventoryDetails>();
+        List<InventoryDetails> details = new List<InventoryDetails>();
 
         public void ReadJsonFile(string fileName)
         {
@@ -17,7 +17,7 @@ namespace ObjectOrientedProgram.InventoryManagement
             {
                 var json = reader.ReadToEnd();
 
-                this.details = JsonConvert.DeserializeObject<List<IneventoryDetails>>(json);
+                this.details = JsonConvert.DeserializeObject<List<InventoryDetails>>(json);
                 Console.WriteLine("Name" + "\t" + "Weight" + "\t" + "price" + "\t" + "PricePerKg");
                 foreach (var data in details)
                 {

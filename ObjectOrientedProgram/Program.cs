@@ -1,16 +1,18 @@
 ﻿using ObjectOrientedProgram.InventoryManagement;
+using ObjectOrientedProgram.InventoryManagementSystem;
 using System;
 
 namespace ObjectOrientedProgram
 {
-    internal class Program
+    public class Program
     {
         const string INVENTORY_DATA_FILE_PATH = @"E:\ashproject\JsonFile\ObjectOrientedProgram\InventoryManagement\Inventory.json";
+        const string INVENTORYDETAILS_DATA_FILE_PATH = @"E:\ashproject\JsonFile\ObjectOrientedProgram\InventoryManagementSystem\InventoryDetails.json";
         static void Main(string[] args)
         {
-            while (true)
+             while (true)
             {
-                Console.WriteLine("Select Programs\n 1.Inventory Management ");
+                Console.WriteLine("Select Programs\n 1.Inventory Management \n2.Inventory Manangement System ");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -18,7 +20,22 @@ namespace ObjectOrientedProgram
                         Inventory inventory = new Inventory();
                         inventory.ReadJsonFile(INVENTORY_DATA_FILE_PATH);
                         break;
+                    case 2:
+                        InventoryFactory inventoryFactory = new InventoryFactory();
+                        inventoryFactory.ReadJsonFile(INVENTORYDETAILS_DATA_FILE_PATH);
+                        InventoryDetails details = new InventoryDetails()
+
+                        {
+                            Name = "a",
+                            Weight = 5,
+                            Price = 25
+                        };
+                        inventoryFactory.AddInventory("WheatList", details);
+                        //inventoryFactory.DeleteInventory("WheatList", "a");
+                        inventoryFactory.WriteTojson(INVENTORYDETAILS_DATA_FILE_PATH);
+                        break;
                 }
+   
             }
         }
     }
